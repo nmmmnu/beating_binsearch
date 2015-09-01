@@ -14,6 +14,7 @@ constexpr const int TEST_COUNT = 1000000;
 #include "linear.h"
 #include "binary.h"
 #include "improved.h"
+#include "improved_unroll.h"
 #include "compare.h"
 
 template <class T, class SEARCH>
@@ -74,7 +75,7 @@ public:
 		auto stop  = get_timestamp();
 
 		std::cout
-				<< std::setw(30) << search.title << " "
+				<< std::setw(40) << search.title << " "
 				<< (stop - start) << std::endl;
 	}
 
@@ -103,6 +104,9 @@ int main(){
 
 	SearchTest<int, ImprovedBinarySearch<int, Compare<int>> > s3 { ARRAY_SIZE };
 	s3.process();
+
+	SearchTest<int, ImprovedUnrolledBinarySearch<int, Compare<int>> > s4 { ARRAY_SIZE };
+	s4.process();
 
 }
 

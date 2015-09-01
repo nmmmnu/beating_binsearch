@@ -27,17 +27,15 @@ public:
 		uint64_t start = start1;
 		uint64_t end   = end1;
 
-		char cmp = 0;
-
 		//while (start < end){
 		while (end - start > CACHE_COUNT_MIN){
 		//	uint64_t mid = start + ((end - start) /  2);
 			uint64_t mid = start + ((end - start) >> 1);
 
 			#ifdef EXIT_ONLY
-			cmp = comp.cmp(data[mid], key);
+			char cmp = comp.cmp(data[mid], key);
 			#else
-			cmp = _linear(mid - CACHE_COUNT_2, mid + CACHE_COUNT_2, data, key, mid);
+			char cmp = _linear(mid - CACHE_COUNT_2, mid + CACHE_COUNT_2, data, key, mid);
 			#endif
 
 			if (cmp == 0){

@@ -1,3 +1,4 @@
+a.out
 
 search
 
@@ -5,4 +6,6 @@ search
 *.d
 
 x.*
+
+_ot/
 
